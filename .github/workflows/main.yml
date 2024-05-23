@@ -1,0 +1,26 @@
+name: Push Build to Artifactory
+
+
+on: [push]
+
+
+jobs:
+ build:
+   runs-on: ubuntu-latest
+  
+   steps:
+   # This action checks out the code from the repository
+   - name: deploy
+     uses: actions/checkout@v2
+   - run: |
+          curl -H "Authorization: Bearer ${{ secrets.JF_TOKENN }}" \
+               -X PUT \
+               -T david.txt \
+                "${{ secrets.JF_URL }}/artifactory/davidko-git-exe/davidko/"
+
+
+
+
+
+
+ -T david.txt ${{ secrets.JF_URL }}
